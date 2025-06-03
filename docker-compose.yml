@@ -8,11 +8,16 @@ services:
       POSTGRES_USER: n8n
       POSTGRES_PASSWORD: n8npass
       POSTGRES_DB: n8n
+     - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
+      - WEBHOOK_TUNNEL_URL=http://TU_IP_PUBLICA:5678
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin123
+  - WEBHOOK_TUNNEL_URL=https://n8n.mercadodigitall.store:5678
     volumes:
       - postgres_data:/var/lib/postgresql/data
-   - N8N_HOST=0.0.0.0
-  - N8N_PORT=5678
-  - WEBHOOK_TUNNEL_URL=https://n8n.mercadodigitall.store:5678
+
   n8n:
     image: n8nio/n8n
     restart: always
